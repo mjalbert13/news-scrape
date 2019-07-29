@@ -17,6 +17,7 @@ app.use(express.static('public'));
 mongoose.connect("mongodb://localhost/newsScrapeDB");
 
 
+
 app.listen(PORT, function(){
     console.log("App is running on port "+PORT)
 });
