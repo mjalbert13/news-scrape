@@ -8,11 +8,11 @@ var ArticleSchema = new Schema({
     },
     summary: {
         tpye: String,
-        required: true
+        required: false
     },
     link: {
         tpye: String,
-        required: true
+        required: false
     },
     note: {
         type: Schema.Types.ObjectId,
