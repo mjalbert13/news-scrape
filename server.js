@@ -19,9 +19,9 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-mongoose.connect("mongodb://localhost/newsScrapeDB");
-
-
+mongoose.connect("mongodb://localhost/newsScrapeDB",{useNewUrlParser: true});
+//routes
+require('./routes/apiRouts')(app);
 
 app.listen(PORT, function(){
     console.log("App is running on port "+PORT)
