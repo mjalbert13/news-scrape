@@ -13,8 +13,8 @@ module.exports = function(app){
          $(".news-box2").each(function(i, elemeent){
             var results = {};
 
-            results.headline = $(this).children(".f22").text();
-            results.summary = $(this).children(".news-mt3").text();
+            results.headline = $(this).children(".f22").text().trim();
+            results.summary = $(this).children(".news-mt3").text().trim();
             results.link = $(this).children(".f22").attr("href");
 
             db.Article.create(results).then(function(dbArticle){
@@ -24,7 +24,8 @@ module.exports = function(app){
                 console.log(err);
             });
         });
-        res.redirect("/articles");
+        res.send("scrape complete");
+        res.redirect("/");
         });
     });
 
