@@ -20,10 +20,22 @@ $(document).on("click", ".saved", function() {
     $.get( "/saved", function (req, res) {
         console.log(res);
     }).then(function(data) {
+        res.json(data)
         window.location.href = "/saved";
     });
-  });
+});
 
+$(document).on("click", ".save", function(e){
+    $(this).parent().remove();
+    var articleId = $(this).attr("data-id");
+    
+    $.ajax({
+        url: '/save/' + articleId,
+        type: "POST"
+    }).done(function(data) {
+        $(".article").filter("[data-id='" + articleId + "']").remove();
+    });
+});
 
 $(document).on("click", ".unsave", function(){
     $(this).parent().remove();
@@ -35,7 +47,7 @@ $(document).on("click", ".unsave", function(){
     }).done(function(data) {
         $(".article").filter("[data-id='" + articleId + "']").remove();
     });
-})
+});
 
 
 $(document).on('click', '.addNote', function (e){
